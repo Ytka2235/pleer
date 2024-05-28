@@ -91,16 +91,16 @@ namespace pleer
         // метод для обработки завершения песни
         private void play_end(object sender, EventArgs e)
         {
-            if (reset == 1) play_audio(playAudio); // если reset = 1 песня повторяется
+            if (reset == 1) listBox.SelectedIndex = (playAudio); // если reset = 1 песня повторяется
             else if (rnd) // если rnd = true следующая песня случайная
             {
                 Random random = new Random();
-                play_audio(random.Next(0, audio.Length));
+                listBox.SelectedIndex = (random.Next(0, audio.Length));
             }
             else if (reset == 2) //если reset = 2 будет играть следующая песня 
             {
-                if (playAudio == audio.Length - 1) play_audio(0);
-                else play_audio(playAudio + 1);
+                if (playAudio == audio.Length - 1) listBox.SelectedIndex = (0);
+                else listBox.SelectedIndex = (playAudio + 1);
             }
             else  // иначе никакая песня дальше идти не будет
             {
@@ -149,7 +149,7 @@ namespace pleer
                 if (rnd)
                 {
                     Random random = new Random();
-                    play_audio(random.Next(0, audio.Length));
+                    listBox.SelectedIndex = random.Next(0, audio.Length);
                 }
                 else if (playAudio == audio.Length - 1) listBox.SelectedIndex = 0;
                 else listBox.SelectedIndex = playAudio + 1;
